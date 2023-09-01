@@ -37,7 +37,7 @@ export class PageAddPlantComponent {
 
 
     this.plantService.addPlant(plant).subscribe({
-      next: (response) => {
+      next: () => {
         alert('Plante ajouté avec succès !');
         this.addPlant.reset();
       },

@@ -26,7 +26,7 @@ export class PlantService {
     return this.http.post<Plant>('http://localhost:3000/api/plants', plant);
   }
 
-  updatePlant(id: number, plant: Plant): Observable<APIByID> {
-    return this.http.put<APIByID>(`http://localhost:3000/api/plants/${id}`, plant);
+  updatePlant(id: number, plant: Plant): Observable<Plant> {
+    return this.http.put<Plant>(`http://localhost:3000/api/plants/${id}`, plant);
   }
 }

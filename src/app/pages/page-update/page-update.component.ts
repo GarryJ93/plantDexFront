@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Plant } from 'src/app/models/plant';
 import { PlantService } from 'src/app/services/plant.service';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-update-plant',
   templateUrl: './page-update.component.html',
@@ -10,28 +10,57 @@ import { PlantService } from 'src/app/services/plant.service';
 })
 export class PageUpdateComponent {
   updatePlant!: FormGroup;
-  plant!: Plant;
+  plant!: Plant ;
+  
 
 
-  constructor(private plantService : PlantService,
-    private formBuilder: FormBuilder,) { }
+  constructor(private plantService: PlantService,
+    private formBuilder: FormBuilder, private route: ActivatedRoute) {
+    
+     }
 
-  ngOnInit(): void {
-    this.updatePlant = this.formBuilder.group({
-      code_plante: [`${this.plant.code_plante}`, Validators.required],
-      nom: [`${this.plant.nom}`, Validators.required],
-      soleil: [`${this.plant.soleil}`, Validators.required],
-      arrosage: [`${this.plant.arrosage}`, [Validators.required]],
-      categorie: [`${this.plant.categorie}`, [Validators.required]],
-      image: [`${this.plant.image}`],
+  ngOnInit() {
+    const routeParam = this.route.snapshot.paramMap;
+    const plantIdFromRoute = Number(routeParam.get('id'));
 
-    })
+      this.plantService.getPlantById(plantIdFromRoute).subscribe((plant) => {
+      console.log(plant);
+      console.log(plant.data);
+      this.plant = plant.data;
+      
+      console.log(this.plant.code_plante);
+
+    
+    
+      this.updatePlant = this.formBuilder.group({
+      code_plante: [this.plant.code_plante, Validators.required],
+      nom: [this.plant.nom, Validators.required],
+      soleil: [this.plant.soleil, Validators.required],
+      arrosage: [this.plant.arrosage, [Validators.required]],
+      categorie: [this.plant.categorie, [Validators.required]],
+      image: [this.plant.image]
+    })})
   }
   
-  OnUpdate(id: number, plant: Plant) {
-    
+  OnUpdate() {
+    const id = this.route.snapshot.params['id'];
+    const plant = this.updatePlant.value
+
+    if (this.updatePlant) {
+    this.plantService.updatePlant(id, plant).subscribe({
+      next: () => {
+        alert('Plante ajouté avec succès !')
+      },
+      error: () => {
+        alert("Erreur lors de la modification de la plante");
+      }
+    })};
+    }
   }
 
     
  
- }
+
+
+
+

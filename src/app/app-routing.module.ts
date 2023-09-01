@@ -14,7 +14,7 @@ const routes: Routes = [{path:'', redirectTo:'home', pathMatch:"full"},
                         {path:'admin', component:PageAdminComponent},
                         {path: 'plant/:id', component: PlantDetailComponent },
                         {path: 'add', component: PageAddPlantComponent },
-                        {path: 'update', component: PageUpdateComponent},
+                        {path: 'update/:id', component: PageUpdateComponent},
                         {path:'**', component:PageNotFoundComponent},
 ];
 
