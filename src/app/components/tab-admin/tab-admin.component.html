@@ -15,7 +15,7 @@
         <td>{{adminPlant.arrosage}}</td>
         <td>{{adminPlant.categorie}}</td>
         <td>{{adminPlant.image}}</td>
-        <td><div class="d-flex flex-column"><button class="btn btn-outline-success m-2" [routerLink]="['/update', adminPlant.id]">Modifier</button><button class="btn btn-outline-danger m-2">Supprimer</button></div></td>
+        <td><div class="d-flex flex-column"><button class="btn btn-outline-success m-2" [routerLink]="['/update', adminPlant.id]">Modifier</button><button class="btn btn-outline-danger m-2" (click)="onDelete()">Supprimer</button></div></td>
     </tr>
 </tbody>
 </table>

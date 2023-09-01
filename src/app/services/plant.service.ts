@@ -29,4 +29,8 @@ export class PlantService {
   updatePlant(id: number, plant: Plant): Observable<Plant> {
     return this.http.put<Plant>(`http://localhost:3000/api/plants/${id}`, plant);
   }
+
+  deletePlant(id: number): Observable<Plant> {
+    return this.http.delete<Plant>(`http:localhost:3000/api/plants/${id}`);
+  }
 }
