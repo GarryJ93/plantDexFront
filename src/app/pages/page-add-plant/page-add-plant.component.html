@@ -1,0 +1,23 @@
+<form  (ngSubmit)="addPlants()" class="m-5 p-3">
+
+    <label for="code_plante" class="m-2">Code de la plante</label>
+    <input type="number" class="form-control w-75" formControlName="code_plante" name="code_plante" id="code_plante">
+
+    <label for="nom" class="m-2">Nom de la plante</label>
+    <input type="text" class="form-control w-75" formControlName="nom" name="nom">
+
+    <label for="soleil" class="m-2">Ensoleillement nécessaire</label>
+    <input type="text" class="form-control w-75" formControlName="soleil" name="soleil" id="soleil">
+
+    <label for="arrosage" class="m-2">Arrossage nécessaire</label>
+    <input type="number" class="form-control w-75" formControlName="arrosage" name="arrosage" id="arrosage">
+
+    <label for="categorie" class="m-2 ">Catégorie de la plante</label>
+    <input type="text" class="form-control w-75" formControlName="categorie" name="categorie" id="categorie">
+
+    <label for="image" class="m-2">Image</label>
+    <input type="file" class="form-control w-75" formControlName="image" name="image" id="image">
+
+        <button href="#" class="btn btn-outline-success mt-4">Ajouter une plante</button>
+</form>
+

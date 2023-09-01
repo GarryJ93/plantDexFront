@@ -1,0 +1,47 @@
+<div class="d-flex flex-row justify-content-center align-content-center m-5" >
+    <img class="w-25 h-25" src="{{plant.image}}" alt="Card image cap">
+    <div class="align-content-center m-5">
+        <h5 class="">{{plant.nom}}</h5>
+        <p class="">Nécessite un ensoleillement {{plant.soleil}} et un arrosage {{plant.arrosage}} fois
+            par semaine. Elle fait partie des {{plant.categorie}}.</p>
+
+             <p *ngIf="plant.arrosage === 3">
+                <app-goutte class="goutte_plein"></app-goutte>
+                <app-goutte class="goutte_plein"></app-goutte>
+                <app-goutte class="goutte_plein"></app-goutte>
+            </p>
+            <p id="bold">Arrosage</p>
+            <p *ngIf="plant.arrosage === 2">
+                <app-goutte class="goutte_plein"></app-goutte>
+                <app-goutte class="goutte_plein"></app-goutte>
+                <app-goutte></app-goutte>
+            </p>
+
+            <p *ngIf="plant.arrosage === 0">
+                <app-goutte class="goutte_plein"></app-goutte>
+                <app-goutte></app-goutte>
+                <app-goutte></app-goutte>
+            </p>
+
+             <p id="bold">Ensoleillement</p>
+           <p *ngIf="plant.soleil === 'beaucoup' ">
+                <app-soleil class="sun_plein"></app-soleil>
+                <app-soleil class="sun_plein"></app-soleil>
+                <app-soleil class="sun_plein"></app-soleil>
+            </p>
+
+            <p *ngIf="plant.soleil === 'moyen' ">
+                <app-soleil class="sun_plein"></app-soleil>
+                <app-soleil class="sun_plein"></app-soleil>
+                <app-soleil></app-soleil>
+            </p>
+
+            <p *ngIf="plant.soleil === 'peu' ">
+                <app-soleil class="sun_plein"></app-soleil>
+                <app-soleil></app-soleil>
+                <app-soleil></app-soleil>
+            </p>
+
+
+    </div>
+</div>
