@@ -2,6 +2,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PlantService } from 'src/app/services/plant.service';
 import { Plant } from 'src/app/models/plant';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-page-admin',
   templateUrl: './page-admin.component.html',
@@ -16,12 +17,16 @@ export class PageAdminComponent {
   userInput!: string;
   categoriesChecked!: string[];
 
-    constructor(private plantService : PlantService){}
+    constructor(private plantService : PlantService, private router: Router){}
 
 
 
 
   ngOnInit() {
+
+    if (!localStorage.getItem('access_token')) {
+      this.router.navigate(['/connexion'])
+    }
     this.plantService.getPlants().subscribe({
       next: (response) => {
         this.allPlant = [...response['data']];
