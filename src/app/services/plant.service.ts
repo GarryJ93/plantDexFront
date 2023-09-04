@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Plant } from '../models/plant';
 import{ Observable } from 'rxjs';
@@ -23,14 +23,17 @@ export class PlantService {
   }
 
   addPlant(plant: Plant): Observable<Plant> {
-    return this.http.post<Plant>('http://localhost:3000/api/plants', plant);
+    const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('access_token') })
+    return this.http.post<Plant>('http://localhost:3000/api/plants', plant, {headers: headers});
   }
 
   updatePlant(id: number, plant: Plant): Observable<Plant> {
-    return this.http.put<Plant>(`http://localhost:3000/api/plants/${id}`, plant);
+    const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('access_token') })
+    return this.http.put<Plant>(`http://localhost:3000/api/plants/${id}`, plant, {headers: headers});
   }
 
-  deletePlant(id: number): Observable<Plant> {
-    return this.http.delete<Plant>(`http:localhost:3000/api/plants/${id}`);
+  deletePlant(id: number) {
+    const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('access_token') })
+    return this.http.delete(`http://localhost:3000/api/plants/${id}`, {headers: headers});
   }
 }

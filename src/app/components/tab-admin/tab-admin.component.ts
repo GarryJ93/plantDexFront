@@ -28,24 +28,31 @@ export class TabAdminComponent {
     })
   }
 
+  
+
   onDelete() {
-    const routeParam = Number(this.adminPlant.id);
+    const routeParam = Number(this.adminPlant.id!);
     
     console.log(routeParam)
+    console.log(typeof routeParam)
     
       
     if (confirm('Êtes-vous sûr ?')) { 
     
     this.plantService.deletePlant(routeParam).subscribe({
       next: (response) => {
-        alert('Plante erradiquée avec succès !')
+        alert('Plante éradiquée avec succès !')
         console.log(response)
+        location.reload();
+    
       },
       error: () => {
         alert("Erreur lors de la suppression de la plante");
       }
-    })}
-    
+       
+    })
+      
+    }
     
   }
 }

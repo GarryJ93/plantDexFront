@@ -22,6 +22,8 @@ import { TabAdminComponent } from './components/tab-admin/tab-admin.component';
 import { PlantDetailComponent } from './components/plant-detail/plant-detail.component';
 import {  PageAddPlantComponent } from './pages/page-add-plant/page-add-plant.component';
 import { PageUpdateComponent } from './pages/page-update/page-update.component';
+import { ConnexionComponent } from './pages/connexion/connexion.component';
+import { InscriptionComponent } from './pages/inscription/inscription.component';
 
 
 
@@ -45,6 +47,8 @@ import { PageUpdateComponent } from './pages/page-update/page-update.component';
     PlantDetailComponent,
     PageAddPlantComponent,
     PageUpdateComponent,
+    ConnexionComponent,
+    InscriptionComponent,
 
 
   ],

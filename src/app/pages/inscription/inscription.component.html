@@ -1,0 +1,19 @@
+<form [formGroup]="addUser" (ngSubmit)="OnAddUser()" class="m-5 p-3">
+
+    <label for="name" class="m-2">Nom</label>
+    <input type="text" class="form-control w-75" formControlName="name" name="name" id="name">
+
+    <label for="username" class="m-2">Pseudo</label>
+    <input type="text" class="form-control w-75" formControlName="username" name="username">
+
+    <label for="email" class="m-2">E-mail</label>
+    <input type="email" class="form-control w-75" formControlName="email" name="email" id="email">
+
+    <label for="password" class="m-2">Mot de passe</label>
+    <input type="password" class="form-control w-75" formControlName="password" name="password" id="password">
+
+    <label for="rôle" class="m-2">Rôle</label>
+    <input type="text" class="form-control w-75" formControlName="rôle" name="rôle" id="rôle" readonly>
+
+        <button href="#" class="btn btn-outline-success mt-4"  [disabled]="addUser.invalid">S'inscrire</button>
+</form>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Plant } from 'src/app/models/plant';
 import { PlantService } from 'src/app/services/plant.service';
 
@@ -14,15 +15,15 @@ export class PageAddPlantComponent {
 
 
   constructor(private plantService : PlantService,
-    private formBuilder: FormBuilder,) { }
+    private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.addPlant = this.formBuilder.group({
       code_plante: ['', Validators.required],
       nom: ['', Validators.required],
       soleil: ['', Validators.required],
-      arrosage: ['', [Validators.required]],
-      categorie: ['', [Validators.required]],
+      arrosage: ['', Validators.min],
+      categorie: ['', Validators.required],
       image: [''],
 
     })}
@@ -38,8 +39,9 @@ export class PageAddPlantComponent {
 
     this.plantService.addPlant(plant).subscribe({
       next: () => {
-        alert('Plante ajouté avec succès !');
+        alert('Plante ajoutée avec succès !');
         this.addPlant.reset();
+        this.router.navigate(['/admin']);
       },
       error: (error) => {
         console.error("Erreur lors de l'ajout de la plante", error);

@@ -1,16 +1,27 @@
 <form *ngIf="plant" [formGroup]="updatePlant" (ngSubmit)="OnUpdate()" class="m-5 p-3">
 
     <label for="code_plante" class="m-2">Code de la plante</label>
-    <input type="number" class="form-control w-75" formControlName="code_plante" name="code_plante" id="code_plante">
+    <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control w-75" formControlName="code_plante" name="code_plante" id="code_plante">
 
     <label for="nom" class="m-2">Nom de la plante</label>
     <input type="text" class="form-control w-75" formControlName="nom" name="nom">
 
     <label for="soleil" class="m-2">Ensoleillement nécessaire</label>
-    <input type="text" class="form-control w-75" formControlName="soleil" name="soleil" id="soleil">
+    <!-- <input type="text" class="form-control w-75" formControlName="soleil" name="soleil" id="soleil"> -->
+    <select name="soleil" id="soleil" formControlName="soleil" class="form-control w-75">
+        <option value="Peu">Peu</option>
+        <option value="Moyen">Moyen</option>
+        <option value="Beaucoup">Beaucoup</option>
+    </select>
 
     <label for="arrosage" class="m-2">Arrosage nécessaire</label>
-    <input type="number" class="form-control w-75" formControlName="arrosage" name="arrosage" id="arrosage">
+    <!-- <input type="text" inputmode="numeric" pattern="[0-3]*" class="form-control w-75" formControlName="arrosage" name="arrosage" id="arrosage"> -->
+    <select name="arrosage" id="arrosage" formControlName="arrosage" class="form-control w-75">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
 
     <label for="categorie" class="m-2 ">Catégorie de la plante</label>
     <input type="text" class="form-control w-75" formControlName="categorie" name="categorie" id="categorie">
